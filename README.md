@@ -1,6 +1,7 @@
 # cpp-template
 
-Template repoisitory for a C++ project with `cmake` and `catch2`.
+Template repository for a C++ project with `cmake`, `catch2` and
+`OpenMP` support.
 
 ## building
 ```sh
