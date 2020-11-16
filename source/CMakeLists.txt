@@ -2,7 +2,7 @@ add_executable(helloworld
     helloworld.cpp
     )
 
-target_link_libraries(helloworld PRIVATE OpenMP::OpenMP_CXX)
+target_link_libraries(helloworld ${LIBRARIES})
 
 add_executable(tests
     tests.cpp
