@@ -22,3 +22,5 @@ The following other Makefile targets may be of use:
 
 You can also execute multiple targets.  For example, run `make clean
 build-all test` to re-build everything and then run tests.
+
+Note that Clang 10 is required for linting.
