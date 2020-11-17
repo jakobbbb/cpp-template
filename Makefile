@@ -3,6 +3,7 @@ MAKEFLAGS += --no-print-directory
 BUILD_DIR = build
 SOURCE_DIRS = source
 SOURCE_FILES = $(shell find $(SOURCE_DIRS) -type f -iregex ".*\.\(c\|h\)\(pp\|xx\|\)")
+CMAKE_FLAGS =
 
 
 .PHONY: build
@@ -16,8 +17,11 @@ build-tests: prepare-build
 .PHONY: prepare-build
 prepare-build:
 	[ -d "$(BUILD_DIR)" ] || mkdir $(BUILD_DIR)
-	cd $(BUILD_DIR) && cmake ..
+	cd $(BUILD_DIR) && cmake $(CMAKE_FLAGS) ..
 
+.PHONY: debug
+debug: CMAKE_FLAGS += -DCMAKE_BUILD_TYPE=Debug
+debug: build;
 
 
 .PHONY: run-tests

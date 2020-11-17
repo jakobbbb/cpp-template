@@ -47,6 +47,8 @@ project.  Binaries will be in `./build/source`.
 The following other Makefile targets may be of use:
 
 * `build` (default)
+* `debug`:
+    Create a debug build.
 * `test`:
     Compile and run tests.
 * `lint`:
