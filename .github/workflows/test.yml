@@ -14,7 +14,7 @@ jobs:
 
             - name: Dependencies (macOS)
               if: runner.os == 'macOS'
-              run: brew install libomp
+              run: brew install libomp clang-format
 
             - name: Build
               run: make build
