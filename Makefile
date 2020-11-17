@@ -16,7 +16,8 @@ build-tests: prepare-build
 .PHONY: prepare-build
 prepare-build:
 	[ -d "$(BUILD_DIR)" ] || mkdir $(BUILD_DIR)
-	cmake -S . -B $(BUILD_DIR)
+	cd $(BUILD_DIR) && cmake ..
+
 
 
 .PHONY: run-tests
