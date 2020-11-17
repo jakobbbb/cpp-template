@@ -12,16 +12,21 @@ jobs:
         steps:
             - uses: actions/checkout@v2
 
-            - name: dependencies-macos
+            - name: dependencies (macos)
               if: runner.os == 'macOS'
+              run: brew install libomp
+
+            - name: prepare build directory
+              run: mkdir build
+
+            - name: generate Makefile
               run: |
-                  brew install libomp
+                  cd build
+                  cmake ..
 
             - name: build
               run: |
-                  mkdir build
                   cd build
-                  cmake ..
                   make
 
             - name: run all binaries
@@ -31,5 +36,4 @@ jobs:
                   done
 
             - name: tests
-              run: |
-                  build/source/tests
+              run: build/source/tests
