@@ -3,39 +3,33 @@ name: ci
 on: [push]
 
 jobs:
-    test-linux:
-        runs-on: ubuntu-latest
+    test:
+        strategy:
+            matrix:
+                os: [ubuntu-latest, macos-latest]
+        runs-on: ${{ matrix.os }}
 
         steps:
             - uses: actions/checkout@v2
 
-            - name: build
-              run: |
-                  mkdir build
-                  cd build
-                  cmake ..
-                  make
-
-            - name: tests
-              run: |
-                  build/source/tests
-                  build/source/helloworld
-
-    test-macos:
-        runs-on: macos-latest
-
-        steps:
-            - uses: actions/checkout@v2
-
-            - name: build
+            - name: dependencies-macos
+              if: runner.os == 'macOS'
               run: |
                   brew install libomp
+
+            - name: build
+              run: |
                   mkdir build
                   cd build
                   cmake ..
                   make
 
+            - name: run all binaries
+              run: |
+                  for e in `find ./build/source -executable -type f -not -name tests`; do \
+                      echo "Running $e..." && $e; \
+                  done
+
             - name: tests
               run: |
                   build/source/tests
-                  build/source/helloworld
