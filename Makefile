@@ -29,6 +29,8 @@ test: build-tests run-tests
 
 .PHONY: lint
 lint:
+	@clang-format --version | grep -qE "[1-9][0-9]+\.[0-9]+\.[0-9]+" || \
+		(echo "Clang 10 or later is required for linting." && exit 1)
 	clang-format -n --Werror $(SOURCE_FILES)
 
 .PHONY: codeformat
