@@ -29,11 +29,9 @@ jobs:
                   cd build
                   make
 
-            - name: run all binaries
+            - name: run binaries
               run: |
-                  for e in `find ./build/source -executable -type f -not -name tests`; do \
-                      echo "Running $e..." && $e; \
-                  done
+                  build/source/helloworld
 
             - name: tests
               run: build/source/tests
