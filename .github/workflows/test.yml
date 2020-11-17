@@ -22,6 +22,9 @@ jobs:
             - name: Run tests
               run: make run-tests
 
-            - name: run binaries
+            - name: Run binaries
               run: |
                   build/source/helloworld
+
+            - name: Lint
+              run: make lint
