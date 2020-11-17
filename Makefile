@@ -1,4 +1,3 @@
-.ONESHELL:
 MAKEFLAGS += --no-print-directory
 
 BUILD_DIR = build
@@ -8,19 +7,16 @@ SOURCE_FILES = $(shell find $(SOURCE_DIRS) -type f -iregex ".*\.\(c\|h\)\(pp\|xx
 
 .PHONY: build
 build: prepare-build
-	cd $(BUILD_DIR)
-	$(MAKE)
+	$(MAKE) -C $(BUILD_DIR)
 
 .PHONY: build-tests
 build-tests: prepare-build
-	cd $(BUILD_DIR)
-	$(MAKE) tests
+	$(MAKE) -C $(BUILD_DIR) tests
 
 .PHONY: prepare-build
 prepare-build:
 	[[ -d $(BUILD_DIR) ]] || mkdir $(BUILD_DIR)
-	cd $(BUILD_DIR)
-	cmake ..
+	cmake -S . -B $(BUILD_DIR)
 
 
 .PHONY: run-tests
