@@ -19,10 +19,10 @@ jobs:
             - name: Build
               run: make build
 
-            - name: Run tests
+            - name: Run Tests
               run: make run-tests
 
-            - name: Run binaries
+            - name: Run Binaries
               run: |
                   build/source/helloworld
 
