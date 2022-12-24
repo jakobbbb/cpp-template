@@ -25,10 +25,5 @@ endif(MSVC)
 
 set(LIBRARIES)
 
-find_package(OpenMP REQUIRED)
-if(OpenMP_CXX_FOUND)
-    set(LIBRARIES ${LIBRARIES} OpenMP::OpenMP_CXX)
-endif()
-
 #check for CMakeLists.txt files in subdirectory source (where your applications are)
 add_subdirectory(source)

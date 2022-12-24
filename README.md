@@ -1,7 +1,6 @@
 # cpp-template
 
-Template repository for a C++17 project with CMake, Catch2 and OpenMP
-support.
+Template repository for a C++17 project with CMake and Catch2 support.
 
 Tests are run using GitHub Actions on Linux and macOS.  Windows is not
 supported yet.
@@ -17,14 +16,6 @@ installed version of Catch2.
 ### Upgrading Catch2
 
 A script to upgrade Catch2 is provided at `external/catch2/upgrade.sh`.
-
-### Make OpenMP Optional or Remove It
-
-The root `CMakeLists.txt` may be adapted to
-* make OpenMP optional by removing the `REQUIRED` keyword in
-  `find_package(OpenMP REQUIRED)` or
-* OpenMP support may be removed entirely by removing the lines relating
-  to OpenMP.
 
 ### Adding Targets
 
