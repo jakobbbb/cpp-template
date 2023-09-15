@@ -16,8 +16,8 @@ jobs:
               if: runner.os == 'macOS'
               run: brew install clang-format
 
-            - name: Build (Windows)
             - uses: ilammy/msvc-dev-cmd@v1
+            - name: Build (Windows)
               run: make build-windows
 
             - uses: actions/checkout@v3
