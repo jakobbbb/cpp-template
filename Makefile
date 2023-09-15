@@ -10,6 +10,11 @@ CMAKE_FLAGS =
 build: prepare-build
 	$(MAKE) -C $(BUILD_DIR)
 
+.PHONY: build-windows
+build-windows: CMAKE_FLAGS += -G"NMake Makefiles"
+build-windows: prepare-build
+	cd $(BUILD_DIR) && nmake
+
 .PHONY: build-tests
 build-tests: prepare-build
 	$(MAKE) -C $(BUILD_DIR) tests
